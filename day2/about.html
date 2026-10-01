@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickNotes - About</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>About QuickNotes</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Key Features</h2>
+        <ul class="features">
+          <li>Fast and lightweight in any browser</li>
+          <li>Responsive card layout on all screens</li>
+          <li>Organised notes with visual styling</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Keyboard Shortcuts</h2>
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Shortcut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Open DevTools</td>
+              <td>F12 / Ctrl+Shift+I</td>
+            </tr>
+            <tr>
+              <td>Device Toolbar</td>
+              <td>Ctrl+Shift+M</td>
+            </tr>
+            <tr>
+              <td>Save File</td>
+              <td>Ctrl+S</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Send Feedback</h2>
+        <form class="feedback-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 QuickNotes. Built during Web Foundations.</p>
+    </footer>
+  </body>
+</html>
