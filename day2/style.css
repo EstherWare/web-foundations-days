@@ -1,4 +1,5 @@
-/* 1. Global Box-Sizing Reset & Body Defaults */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -7,23 +8,35 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #222;
+  font-family: "DM Sans", sans-serif;
+  background: #f5f7f4;
+  color: #17212b;
   line-height: 1.5;
 }
 
-/* 2. Header & Navigation */
 header {
-  background-color: #8e0000;
-  color: white;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 34px 20px 28px;
+  border-bottom: 1px solid #dbe3df;
   text-align: center;
-  padding: 24px 16px;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: #66727e;
+}
+
+header h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", sans-serif;
 }
 
 header h1 {
-  margin: 0 0 12px 0;
-  font-size: 2rem;
+  margin: 0;
+  color: #b84d35;
+  font-size: 3rem;
 }
 
 nav {
@@ -31,41 +44,64 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 16px;
+  margin-top: 22px;
 }
 
 nav a {
-  color: white;
+  color: #17212b;
   text-decoration: none;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  font-weight: 700;
+  padding: 9px 15px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  opacity: 0.9;
+nav a:hover,
+nav a:focus-visible {
+  background-color: #17212b;
+  color: white;
 }
 
 /* 3. Centred Main Container & White Card Sections */
 main {
-  max-width: 720px;
-  margin: 24px auto;
-  padding: 0 16px;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 52px 20px 64px;
 }
 
-section {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+section,
+.page-intro {
+  margin-bottom: 24px;
+  padding: 28px;
+  border: 1px solid #dbe3df;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 45px rgba(23, 33, 43, 0.09);
+}
+
+.page-intro h2,
+section h2,
+section h3 {
+  margin-top: 0;
+  color: #17212b;
+}
+
+.page-intro h2 {
+  margin-bottom: 8px;
+  font-size: 2.2rem;
+}
+
+.page-intro p {
+  max-width: 700px;
+  margin: 0;
+  color: #66727e;
+  font-size: 1.05rem;
 }
 
 /* 4. Notes List & Note Form (Home Page) */
 #note-form {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -76,10 +112,19 @@ section {
 
 #note-input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+  min-width: 180px;
+  padding: 12px 14px;
+  border: 1px solid #dbe3df;
+  border-radius: 8px;
+  color: #17212b;
+  font: inherit;
+}
+
+#note-input:focus,
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  outline: 3px solid rgba(232, 111, 81, 0.22);
+  border-color: #e86f51;
 }
 
 #notes-list {
@@ -89,55 +134,59 @@ section {
 }
 
 .note {
-  background-color: #fffbe6;
+  background-color: #fff8df;
   border-left: 4px solid #0ba184;
-  padding: 12px 16px;
+  padding: 14px 16px;
   margin-bottom: 10px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 /* 5. Features Grid (About Page) */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
+  gap: 14px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .features li {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  background-color: #e8f2eb;
+  border: 1px solid #dbe3df;
+  border-radius: 10px;
   padding: 16px;
-  text-align: center;
 }
 
 /* 6. Shortcuts Table Styling */
 .shortcuts-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
 .shortcuts-table th,
 .shortcuts-table td {
-  border: 1px solid #ddd;
-  padding: 10px 12px;
+  border-bottom: 1px solid #dbe3df;
+  padding: 13px 12px;
   text-align: left;
 }
 
 .shortcuts-table th {
-  background-color: #f1f5f9;
-  font-weight: bold;
+  color: #b84d35;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 /* 7. Feedback Form (Vertically Stacked, Full Width) */
 .feedback-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
+}
+
+.feedback-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .feedback-form label {
@@ -147,53 +196,82 @@ section {
 .feedback-form input,
 .feedback-form textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid #dbe3df;
+  border-radius: 8px;
+  color: #17212b;
+  font: inherit;
+}
+
+.feedback-form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 /* 8. Buttons & Transitions */
 button {
-  background-color: #0ba184;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
   align-self: flex-start;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e86f51;
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #088a70;
+button:hover,
+button:focus-visible {
+  background-color: #b84d35;
   transform: translateY(-2px);
 }
 
 /* 9. Footer */
 footer {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 20px 36px;
+  border-top: 1px solid #dbe3df;
+  color: #66727e;
   text-align: center;
-  color: #777;
-  padding: 16px;
+  font-size: 0.92rem;
 }
 
 /* 10. Small Screens / Mobile Media Query */
 @media (max-width: 600px) {
   header {
-    padding: 16px 12px;
+    padding: 24px 14px 20px;
   }
 
   header h1 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
+  }
+
+  main {
+    padding: 36px 14px 48px;
+  }
+
+  section,
+  .page-intro {
+    padding: 22px;
   }
 
   #note-form {
     flex-direction: column;
   }
 
+  #note-input,
   button {
     width: 100%;
+  }
+
+  button {
+    align-self: stretch;
+  }
+
+  .shortcuts-table {
+    font-size: 0.92rem;
   }
 }

@@ -8,7 +8,10 @@
   </head>
   <body>
     <header>
-      <h1>About QuickNotes</h1>
+      <div class="brand">
+        <h1>QuickNotes</h1>
+        <p>Your simple note-taking app</p>
+      </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -16,52 +19,66 @@
     </header>
 
     <main>
+      <div class="page-intro">
+        <h2>About QuickNotes</h2>
+        <p>QuickNotes is a lightweight, distraction-free application built to capture your thoughts instantly. It helps you record and review notes without unnecessary complexity.</p>
+      </div>
+
       <section>
-        <h2>Key Features</h2>
+        <h3>How to use QuickNotes</h3>
+        <ol>
+          <li>Type your thought into the "New note" text box on the Home page.</li>
+          <li>Click the "Add Note" button.</li>
+          <li>Review all your collected notes instantly.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>Features</h3>
         <ul class="features">
-          <li>Fast and lightweight in any browser</li>
-          <li>Responsive card layout on all screens</li>
-          <li>Organised notes with visual styling</li>
+          <li>Lightning-fast note entry</li>
+          <li>Clean and accessible interface</li>
+          <li>No complex menus required</li>
         </ul>
       </section>
 
       <section>
-        <h2>Keyboard Shortcuts</h2>
+        <h3>Keyboard shortcuts</h3>
         <table class="shortcuts-table">
           <thead>
             <tr>
-              <th>Action</th>
               <th>Shortcut</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Open DevTools</td>
-              <td>F12 / Ctrl+Shift+I</td>
+              <td>Enter</td>
+              <td>Save a new note while typing</td>
             </tr>
             <tr>
-              <td>Device Toolbar</td>
-              <td>Ctrl+Shift+M</td>
-            </tr>
-            <tr>
-              <td>Save File</td>
-              <td>Ctrl+S</td>
+              <td>Tab</td>
+              <td>Move to the next interactive page element</td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section>
-        <h2>Send Feedback</h2>
-        <form class="feedback-form">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
+        <h3>Send feedback</h3>
+        <form id="feedback-form" class="feedback-form">
+          <div>
+            <label for="feedback-name">Name</label>
+            <input type="text" id="feedback-name" name="name" required />
+          </div>
+          <div>
+            <label for="feedback-email">Email</label>
+            <input type="email" id="feedback-email" name="email" required />
+          </div>
+          <div>
+            <label for="feedback-message">Message</label>
+            <textarea id="feedback-message" name="message" required></textarea>
+          </div>
 
           <button type="submit">Submit Feedback</button>
         </form>

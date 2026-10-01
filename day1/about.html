@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickNotes - About</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <h1>QuickNotes</h1>
-      <p>Your simple note-taking app</p>
+      <div class="brand">
+        <h1>QuickNotes</h1>
+        <p>Your simple note-taking app</p>
+      </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -17,8 +19,10 @@
     </header>
 
     <main>
-      <h2>About QuickNotes</h2>
-      <p>QuickNotes is a lightweight, distraction-free application built to capture your thoughts instantly. It helps you record and review notes without unnecessary complexity.</p>
+      <div class="page-intro">
+        <h2>About QuickNotes</h2>
+        <p>QuickNotes is a lightweight, distraction-free application built to capture your thoughts instantly. It helps you record and review notes without unnecessary complexity.</p>
+      </div>
 
       <section>
         <h3>How to use QuickNotes</h3>
@@ -31,7 +35,7 @@
 
       <section>
         <h3>Features</h3>
-        <ul>
+        <ul class="features">
           <li>Lightning-fast note entry</li>
           <li>Clean and accessible interface</li>
           <li>No complex menus required</li>
@@ -40,7 +44,7 @@
 
       <section>
         <h3>Keyboard shortcuts</h3>
-        <table>
+        <table class="shortcuts-table">
           <thead>
             <tr>
               <th>Shortcut</th>
@@ -62,7 +66,7 @@
 
       <section>
         <h3>Send feedback</h3>
-        <form id="feedback-form">
+        <form id="feedback-form" class="feedback-form">
           <div>
             <label for="feedback-name">Name</label>
             <input type="text" id="feedback-name" name="name" required />

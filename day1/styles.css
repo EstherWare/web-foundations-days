@@ -109,12 +109,14 @@ main > p {
 
 main > section,
 main > form,
-main > h2 + p {
+main > h2 + p,
+.page-intro {
   margin-bottom: 24px;
 }
 
 main > section,
-main > h2 + p {
+main > h2 + p,
+.page-intro {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -123,9 +125,25 @@ main > h2 + p {
 }
 
 main > section h2,
-main > section h3 {
+main > section h3,
+.page-intro h2 {
   margin-top: 0;
   font-size: 1.35rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.features li {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--sage);
 }
 
 form {
