@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Notes Toolkit</title>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <p class="eyebrow">Day 03 / JavaScript</p>
+        <h1>Notes Toolkit</h1>
+        <p>Search, sort, and grow a small collection of useful notes.</p>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="../day2/index.html">Day 2</a>
+        <a href="../index.html">All days</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">A tiny notes lab</p>
+        <h2>Make the list yours.</h2>
+        <p>Practice arrays, objects, filtering, and validation through a working notes interface.</p>
+      </section>
+
+      <div class="workspace">
+        <section class="panel">
+          <h2>Add a note</h2>
+          <form id="note-form">
+            <label for="note-text">Note</label>
+            <textarea id="note-text" rows="4" maxlength="200" placeholder="What needs remembering?"></textarea>
+            <label for="note-category">Category</label>
+            <select id="note-category">
+              <option value="personal">Personal</option>
+              <option value="work">Work</option>
+              <option value="study">Study</option>
+            </select>
+            <button type="submit">Add note</button>
+            <p id="form-message" class="form-message" role="status"></p>
+          </form>
+        </section>
+
+        <section class="panel notes-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Your collection</p>
+              <h2>Notes</h2>
+            </div>
+            <label class="search-label" for="search-input">Search <input id="search-input" type="search" placeholder="Find a note" /></label>
+          </div>
+          <p id="summary"></p>
+          <ul id="notes-list"></ul>
+          <p id="empty-state" class="empty-state" hidden>No notes match that search.</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
