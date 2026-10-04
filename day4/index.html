@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>QuickNotes</title>
+  </head>
+  <body>
+    <main class="notes-app">
+      <h1>QuickNotes</h1>
+      <label for="note-text">Write a note</label>
+      <textarea
+        id="note-text"
+        name="note"
+        rows="12"
+        placeholder="Start typing..."
+      ></textarea>
+
+      <div class="status" aria-live="polite">
+        <p id="char-count">0 / 200 characters</p>
+        <p id="word-count">0 words</p>
+      </div>
+
+      <div class="actions">
+        <button id="clear-btn" type="button">Clear</button>
+        <button id="theme-toggle" type="button">Dark mode</button>
+      </div>
+    </main>
+  </body>
+</html>
