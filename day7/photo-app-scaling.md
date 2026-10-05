@@ -18,13 +18,14 @@
 | Daily active users | `10,000,000 × 10%` | **1,000,000 users/day** |
 | Photo uploads per day | `1,000,000 × 1` | **1,000,000 uploads/day** |
 | Average uploads per second | `1,000,000 ÷ 86,400` | **11.6 uploads/second** |
+| Peak uploads per second | `11.6 × 5` | **about 58 uploads/second** |
 | Feed views per day | `1,000,000 × 50` | **50,000,000 views/day** |
 | Average feed views per second | `50,000,000 ÷ 86,400` | **579 views/second** |
 | Peak feed views per second | `579 × 5` | **about 2,894 views/second** |
 | Photos per year | `1,000,000 × 365` | **365,000,000 photos** |
 | Photo storage per year | `365,000,000 × 2.05 MB` | **748,250,000 MB**, or **about 748.25 TB** |
 
-This is about **748.25 TB** using decimal units: 748,250,000 MB ÷ 1,000 = 748,250 GB, and ÷ 1,000 = 748.25 TB. It excludes database metadata, multiple image sizes, backups, and replication, so production capacity planning would reserve additional space.
+This is about **748.25 TB** using decimal units: 730 TB of original photos plus 18.25 TB of thumbnails. It excludes database metadata, multiple image sizes, backups, and replication, so production capacity planning would reserve additional space.
 
 ## Read/write pattern
 
