@@ -21,10 +21,14 @@ CREATE TABLE enrolments (
   FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 
+CREATE INDEX idx_enrolments_course_id
+ON enrolments(course_id);
+
 INSERT INTO students (student_id, name, email) VALUES
   (1, 'Alice Johnson', 'alice.johnson@example.com'),
   (2, 'Brian Smith', 'brian.smith@example.com'),
-  (3, 'Chloe Davis', 'chloe.davis@example.com');
+  (3, 'Chloe Davis', 'chloe.davis@example.com'),
+  (4, 'Daniel Evans', 'daniel.evans@example.com');
 
 INSERT INTO courses (course_id, course_name, teacher) VALUES
   (1, 'Mathematics', 'Mr. Patel'),

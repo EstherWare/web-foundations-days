@@ -2,7 +2,7 @@
 
 ## Tables
 
-- **`students`** stores one row for each student. Each student has a unique ID, a required name, and a unique email address.
+- **`students`** stores one row for each student. Each student has a unique ID, a required name, and a unique email address. Daniel is included as a student with no enrolments so the query for students who have not enrolled in a course can be demonstrated.
 - **`courses`** stores one row for each course. Each course has a unique ID, a required name, and a teacher.
 - **`enrolments`** records which students take which courses. It also stores the student's grade for that course.
 
@@ -14,7 +14,7 @@
 
 ## Index
 
-I would add an index on `enrolments(course_id)` because queries that list all students on a course and count students per course use the course ID to find matching enrolment rows. The primary key already indexes `student_id, course_id` in that order, so a separate course-first index would make these lookups more efficient.
+The SQL adds an index on `enrolments(course_id)` because queries that list all students on a course and count students per course use the course ID to find matching enrolment rows. The primary key already indexes `student_id, course_id` in that order, so a separate course-first index makes these lookups more efficient.
 
 ## SQL or NoSQL
 
