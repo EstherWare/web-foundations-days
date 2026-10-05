@@ -9,7 +9,7 @@ function renderUsers(list) {
   usersList.replaceChildren();
 
   if (list.length === 0) {
-    if (users.length > 0 && filterInput.value.trim() !== "") {
+    if (filterInput.value.trim() !== "") {
       status.textContent = "No users match your filter.";
     }
     return;
