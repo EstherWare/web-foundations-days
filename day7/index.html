@@ -3,14 +3,431 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SnapShare Scaling Plan</title>
+    <meta
+      name="description"
+      content="SnapShare photo-sharing app scaling plan"
+    />
+    <title>SnapShare | Scaling Plan</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #19233b;
+        --muted: #5d6982;
+        --paper: #f7f9fc;
+        --card: #ffffff;
+        --line: #dfe5ef;
+        --blue: #3157d5;
+        --blue-soft: #e9eeff;
+        --teal: #087f81;
+        --shadow: 0 12px 30px rgba(25, 35, 59, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      header {
+        color: #fff;
+        background: linear-gradient(135deg, #182650, #3157d5);
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 4.5rem 0 4rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.75rem;
+        color: #b9c7ff;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.15;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(2.5rem, 7vw, 5.5rem);
+        letter-spacing: -0.05em;
+      }
+
+      .hero p {
+        max-width: 680px;
+        margin: 1.25rem 0 0;
+        color: #dce3ff;
+        font-size: 1.15rem;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+
+      nav a,
+      .source-link {
+        display: inline-block;
+        padding: 0.65rem 1rem;
+        border-radius: 999px;
+        color: var(--ink);
+        background: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      nav a:hover,
+      nav a:focus-visible,
+      .source-link:hover,
+      .source-link:focus-visible {
+        color: var(--blue);
+        outline: 3px solid #b9c7ff;
+        outline-offset: 2px;
+      }
+
+      main {
+        padding: 3rem 0 5rem;
+      }
+
+      section {
+        margin-top: 3.5rem;
+        scroll-margin-top: 1.5rem;
+      }
+
+      section:first-child {
+        margin-top: 0;
+      }
+
+      h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        letter-spacing: -0.03em;
+      }
+
+      h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+      }
+
+      .intro,
+      .card,
+      .tradeoff,
+      .diagram {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .intro,
+      .card,
+      .tradeoff {
+        padding: 1.35rem;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 1rem;
+      }
+
+      .metric strong {
+        display: block;
+        color: var(--blue);
+        font-size: 1.55rem;
+      }
+
+      .metric span,
+      .muted {
+        color: var(--muted);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 650px;
+      }
+
+      th,
+      td {
+        padding: 0.9rem 1rem;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #fff;
+        background: #263b82;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .callout {
+        margin-top: 1rem;
+        padding: 1rem 1.2rem;
+        border-left: 4px solid var(--teal);
+        border-radius: 0.5rem;
+        background: #e9f8f7;
+      }
+
+      .diagram {
+        overflow-x: auto;
+        padding: 1.25rem;
+        background: #101a35;
+      }
+
+      pre {
+        margin: 0;
+        color: #dce3ff;
+        font: 0.78rem/1.45 "Cascadia Code", Consolas, monospace;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      ol {
+        display: grid;
+        gap: 0.75rem;
+        padding-left: 1.5rem;
+      }
+
+      li::marker {
+        color: var(--blue);
+        font-weight: 800;
+      }
+
+      .tradeoff strong {
+        color: var(--blue);
+      }
+
+      footer {
+        padding: 2rem 0 3rem;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 3rem 0;
+        }
+
+        main {
+          padding-top: 2rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <h1>SnapShare Scaling Plan</h1>
-      <p>
-        <a href="photo-app-scaling.md">Read the complete scaling plan</a>
-      </p>
+    <header>
+      <div class="wrap hero">
+        <p class="eyebrow">Day 7 · Systems design</p>
+        <h1>SnapShare scaling plan</h1>
+        <p>
+          A practical architecture for a photo-sharing app with one million
+          daily active users and a read-heavy feed.
+        </p>
+        <nav aria-label="Page sections">
+          <a href="#estimates">Estimates</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#upload-flow">Upload flow</a>
+          <a href="#trade-offs">Trade-offs</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section id="estimates" aria-labelledby="estimates-heading">
+        <h2 id="estimates-heading">Assumptions and estimates</h2>
+        <div class="intro">
+          <div class="metric">
+            <strong>10 million</strong>
+            <span>registered users</span>
+          </div>
+          <div class="metric">
+            <strong>1 million</strong>
+            <span>daily active users (10%)</span>
+          </div>
+          <div class="metric">
+            <strong>1 photo</strong>
+            <span>uploaded per active user daily</span>
+          </div>
+          <div class="metric">
+            <strong>50 pages</strong>
+            <span>viewed per active user daily</span>
+          </div>
+          <div class="metric">
+            <strong>2.05 MB</strong>
+            <span>original plus thumbnail</span>
+          </div>
+        </div>
+        <p class="muted">
+          Calculations use 86,400 seconds per day, 365 days per year, decimal
+          storage units, and a 5× peak multiplier. One feed page request is
+          counted as one feed view.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Calculation</th>
+                <th>Estimate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Daily active users</td><td>10,000,000 × 10%</td><td><strong>1,000,000/day</strong></td></tr>
+              <tr><td>Average uploads</td><td>1,000,000 ÷ 86,400</td><td><strong>11.6/second</strong></td></tr>
+              <tr><td>Peak uploads</td><td>11.6 × 5</td><td><strong>about 58/second</strong></td></tr>
+              <tr><td>Average feed views</td><td>(1,000,000 × 50) ÷ 86,400</td><td><strong>579/second</strong></td></tr>
+              <tr><td>Peak feed views</td><td>579 × 5</td><td><strong>about 2,894/second</strong></td></tr>
+              <tr><td>Photos per year</td><td>1,000,000 × 365</td><td><strong>365 million</strong></td></tr>
+              <tr><td>Storage per year</td><td>365,000,000 × 2.05 MB</td><td><strong>about 748.25 TB</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          The annual storage estimate is about 730 TB of original photos plus
+          18.25 TB of thumbnails. It excludes metadata, backups, replication,
+          and additional image sizes.
+        </div>
+      </section>
+
+      <section aria-labelledby="pattern-heading">
+        <h2 id="pattern-heading">Read-heavy system</h2>
+        <div class="card">
+          <p>
+            SnapShare is <strong>read-heavy</strong>: users generate roughly
+            50 feed reads for every upload. The design therefore prioritizes
+            low-latency reads with a CDN, cache, horizontally scalable app
+            servers, and a database read replica. Upload work can be buffered
+            and processed asynchronously.
+          </p>
+          <h3>Why object storage?</h3>
+          <p>
+            Large photo files should not live inside the database because they
+            make storage, backups, replication, and queries more expensive.
+            Object storage holds the originals and thumbnails, while the
+            database stores compact metadata and storage keys.
+          </p>
+        </div>
+      </section>
+
+      <section id="architecture" aria-labelledby="architecture-heading">
+        <h2 id="architecture-heading">Architecture</h2>
+        <div class="diagram">
+          <pre aria-label="SnapShare architecture diagram">
+       Users
+         |
+         v
+        CDN -------------> Object storage
+         |                 (originals + thumbnails)
+         v                         ^
+    Load balancer                  |
+         |                         |
+         v                         |
+   App servers <-------> Cache     |
+      |   |                 |      |
+      |   +--> Primary DB --+------+
+      |          |
+      |          v
+      |      Read replica
+      |
+      v
+    Queue -------------> Thumbnail worker
+                              |
+                              +----> Object storage
+          </pre>
+        </div>
+        <div class="grid" style="margin-top: 1rem">
+          <div class="card"><h3>CDN</h3><p>Serves popular photos and thumbnails close to users, reducing latency and origin traffic.</p></div>
+          <div class="card"><h3>Load balancer</h3><p>Distributes requests across healthy app servers and supports horizontal scaling.</p></div>
+          <div class="card"><h3>App servers</h3><p>Handle authentication, validation, feed logic, and upload coordination while remaining stateless.</p></div>
+          <div class="card"><h3>Cache</h3><p>Keeps hot feeds and metadata in memory so repeated reads avoid database work.</p></div>
+          <div class="card"><h3>Primary database</h3><p>Stores durable users, follows, photo metadata, and upload records and handles writes.</p></div>
+          <div class="card"><h3>Read replica</h3><p>Handles feed and metadata reads without competing with primary database writes.</p></div>
+          <div class="card"><h3>Object storage</h3><p>Stores large originals and generated thumbnails durably and independently of database records.</p></div>
+          <div class="card"><h3>Queue</h3><p>Buffers thumbnail jobs so uploads stay responsive during worker slowdowns or traffic bursts.</p></div>
+          <div class="card"><h3>Thumbnail worker</h3><p>Creates thumbnails, stores them, and updates the related photo metadata.</p></div>
+        </div>
+      </section>
+
+      <section id="upload-flow" aria-labelledby="flow-heading">
+        <h2 id="flow-heading">Photo upload flow</h2>
+        <div class="card">
+          <ol>
+            <li>The user selects a photo and starts an upload request.</li>
+            <li>The app server authenticates the user, validates the file, creates a photo ID, and reserves a storage key.</li>
+            <li>The client uploads the original directly to object storage using a short-lived upload URL.</li>
+            <li>The app server records the photo metadata and original object key in the primary database.</li>
+            <li>The app server places a thumbnail job on the queue and returns upload success.</li>
+            <li>A thumbnail worker reads the original, creates the 50 KB thumbnail, and stores it in object storage.</li>
+            <li>The worker saves the thumbnail key and processing status in the database; feed requests then use CDN URLs.</li>
+            <li>Failed jobs are retried, with repeatedly failing jobs sent to a dead-letter queue for investigation.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="trade-offs" aria-labelledby="trade-offs-heading">
+        <h2 id="trade-offs-heading">Trade-offs</h2>
+        <div class="grid">
+          <div class="tradeoff">
+            <h3>Direct upload vs app-server upload</h3>
+            <p><strong>Benefit:</strong> Direct uploads reduce app-server bandwidth. <strong>Cost:</strong> They require signed URLs, completion handling, and validation after upload.</p>
+          </div>
+          <div class="tradeoff">
+            <h3>Read replica vs one database</h3>
+            <p><strong>Benefit:</strong> Read replicas increase feed capacity. <strong>Cost:</strong> Replication lag can delay newly uploaded photos in some feeds.</p>
+          </div>
+          <div class="tradeoff">
+            <h3>Async vs synchronous thumbnails</h3>
+            <p><strong>Benefit:</strong> Async processing makes uploads faster and absorbs bursts. <strong>Cost:</strong> Users may briefly see a processing placeholder.</p>
+          </div>
+          <div class="tradeoff">
+            <h3>Cache performance vs freshness</h3>
+            <p><strong>Benefit:</strong> Caching lowers latency and cost. <strong>Cost:</strong> Updates and deletions require invalidation and may briefly show older data.</p>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <p>
+        <a class="source-link" href="photo-app-scaling.md">View the Markdown assignment</a>
+      </p>
+    </footer>
   </body>
 </html>
